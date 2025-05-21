@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist'
 ]
 
 REST_FRAMEWORK = {
@@ -86,6 +88,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+
+# JWT authentication
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=8),  # Short-lived access token
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token lasts 7 days
+    'ROTATE_REFRESH_TOKENS': True,  # Issue new refresh token upon use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens
+    'AUTH_HEADER_TYPES': ('Bearer'),  # Token format: Authorization: Bearer <token>
+}
 
 
 # Database
