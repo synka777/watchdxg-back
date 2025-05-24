@@ -2,7 +2,7 @@ from django.db import models
 
 
 class XAccount(models.Model):
-    id = models.BigIntegerField()
+    id = models.BigIntegerField(primary_key=True)
     handle = models.CharField(max_length=50) # Reduce limit
 
     class Meta:

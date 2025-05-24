@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%%gid6!n__!*&k17w^j1+4zf2w32=-=rv_=x2(3#hcotex7wkj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist'
@@ -90,19 +91,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# JWT authentication
-
-from datetime import timedelta
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=8),  # Short-lived access token
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token lasts 7 days
-    'ROTATE_REFRESH_TOKENS': True,  # Issue new refresh token upon use
-    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens
-    'AUTH_HEADER_TYPES': ('Bearer'),  # Token format: Authorization: Bearer <token>
-}
-
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -115,6 +103,19 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+}
+
+
+# Authentication
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=8),  # Short-lived access token
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token lasts 7 days
+    'ROTATE_REFRESH_TOKENS': True,  # Issue new refresh token upon use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens
+    'AUTH_HEADER_TYPES': ('Bearer'),  # Token format: Authorization: Bearer <token>
 }
 
 
