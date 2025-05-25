@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'config', # Declared for the create_user Django command only
     'api',
     'rest_framework',
     'rest_framework_simplejwt',

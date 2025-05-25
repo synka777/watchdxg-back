@@ -1,0 +1,1 @@
+# default_app_config = 'api.apps.ApiConfig' # Should be detected without this from Django 3.2+

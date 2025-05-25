@@ -55,3 +55,20 @@ Summary
 - The frontend simply selects a "view context" based on a handle.
 
 This model is simple, secure, and ideal for the single-user scenario.
+
+
+## 🚟 HTTP Requests
+
+#### Get access and refresh tokens
+```bash
+curl -X POST http://localhost:8000/api/token \
+    -H "Content-Type: application/json" \
+    -d '{"username": "watchdxg", "password": "watchdxg"}'
+```
+
+#### Refresh a token
+```bash
+curl -X POST http://localhost:8000/api/token/refresh \
+    -H "Content-Type: application/json" \
+    -d '{"refresh": <Your refresh token>}'
+```
