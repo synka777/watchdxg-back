@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%%gid6!n__!*&k17w^j1+4zf2w32=-=rv_=x2(3#hcotex7wkj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -54,6 +54,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
@@ -118,8 +119,14 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Refresh token lasts 7 days
     'ROTATE_REFRESH_TOKENS': True,  # Issue new refresh token upon use
     'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens
-    'AUTH_HEADER_TYPES': ('Bearer'),  # Token format: Authorization: Bearer <token>
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Token format: Authorization: Bearer <token>
 }
+
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'authorization',
+]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",  # Frontend running on localhost:3000

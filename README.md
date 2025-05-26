@@ -61,14 +61,28 @@ This model is simple, secure, and ideal for the single-user scenario.
 
 #### Get access and refresh tokens
 ```bash
-curl -X POST http://localhost:8000/api/token \
+curl -X POST http://localhost:8000/api/token/ \
     -H "Content-Type: application/json" \
     -d '{"username": "watchdxg", "password": "watchdxg"}'
 ```
 
 #### Refresh a token
 ```bash
-curl -X POST http://localhost:8000/api/token/refresh \
+curl -X POST http://localhost:8000/api/token/refresh/ \
     -H "Content-Type: application/json" \
     -d '{"refresh": <Your refresh token>}'
+```
+
+#### Get X account by handle
+```bash
+curl -X GET "http://localhost:8000/api/accounts/<YourXUserHandle>/" \
+  -H "Authorization: Bearer <Your access token>"
+```
+
+#### Get X users for a given X account
+
+Just add the account id you got from the previous request
+```bash
+curl -X GET "http://localhost:8000/api/users/?account_id=<int>" \
+  -H "Authorization: Bearer <Your access token>"
 ```

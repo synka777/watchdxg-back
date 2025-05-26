@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import XAccount, XUser
 
 
-class AccountSerializer(serializers.ModelSerializer):
+class XAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = XAccount
         fields = ['id', 'handle']
