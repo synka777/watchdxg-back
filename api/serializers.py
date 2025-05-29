@@ -19,6 +19,7 @@ class XUserSerializer(serializers.ModelSerializer):
             'bio',
             'created_at',
             'following_count',
+            'followers_count',
             'featured_url',
             'follower'
         ]
